@@ -4,6 +4,7 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using MonoMod.Cil;
+using PeacefulCompany;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -21,21 +22,31 @@ namespace OutdoorHazardRemoverPatch {
         private static void OnGlobalTimeSync(On.FloodWeather.orig_OnGlobalTimeSync orig, FloodWeather self)
         {
             orig(self);
-            self.floodLevelOffset = 0;
+            if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
+                self.floodLevelOffset = 0;
+            }
         }
         private static void SetStaticElectricityWarning(On.StormyWeather.orig_SetStaticElectricityWarning orig, StormyWeather self, NetworkObject warningObject, float particleTime)
         {
-            PeacefulCompany.Plugin.logSrc.LogWarning($"Tried to give static warning, removed function.");
+            if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
+                Plugin.logSrc.LogWarning($"Tried to give static warning, removed function.");
+            }
             
         }
         private static void LightningStrikeRandom(On.StormyWeather.orig_LightningStrikeRandom orig, StormyWeather self) {
-            PeacefulCompany.Plugin.logSrc.LogWarning($"Tried to summon random lightning, removed function.");
+            if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
+                Plugin.logSrc.LogWarning($"Tried to summon random lightning, removed function.");
+            }
         }
         private static void LightningStrike(On.StormyWeather.orig_LightningStrike orig, StormyWeather self, Vector3 strikePosition, bool useTargetedObject) {
-            PeacefulCompany.Plugin.logSrc.LogWarning($"Tried to summon lightning, removed function.");
+            if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
+                Plugin.logSrc.LogWarning($"Tried to summon lightning, removed function.");
+            }
         }
         private static void SpawnOutsideHazards(On.RoundManager.orig_SpawnOutsideHazards orig, RoundManager self) {
-            PeacefulCompany.Plugin.logSrc.LogWarning($"Tried to spawn outside hazards, removed function.");
+            if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
+                Plugin.logSrc.LogWarning($"Tried to spawn outside hazards, removed function.");
+            }
         }
     }
 }
