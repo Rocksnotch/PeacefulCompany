@@ -30,22 +30,32 @@ namespace OutdoorHazardRemoverPatch {
         {
             if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
                 Plugin.logSrc.LogWarning($"Tried to give static warning, removed function.");
+            } else {
+                orig(self, warningObject, particleTime);
             }
             
         }
         private static void LightningStrikeRandom(On.StormyWeather.orig_LightningStrikeRandom orig, StormyWeather self) {
             if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
                 Plugin.logSrc.LogWarning($"Tried to summon random lightning, removed function.");
+            } else {
+                orig(self);
+            
             }
         }
         private static void LightningStrike(On.StormyWeather.orig_LightningStrike orig, StormyWeather self, Vector3 strikePosition, bool useTargetedObject) {
             if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
                 Plugin.logSrc.LogWarning($"Tried to summon lightning, removed function.");
+            } else {
+                orig(self, strikePosition, useTargetedObject);
+            
             }
         }
         private static void SpawnOutsideHazards(On.RoundManager.orig_SpawnOutsideHazards orig, RoundManager self) {
             if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
                 Plugin.logSrc.LogWarning($"Tried to spawn outside hazards, removed function.");
+            } else {
+                orig(self);
             }
         }
     }
