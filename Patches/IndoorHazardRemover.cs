@@ -16,6 +16,8 @@ namespace IndoorHazardRemoverPatch {
         private static void GeneratedFloorPostProcessing(On.RoundManager.orig_GeneratedFloorPostProcessing orig, RoundManager self) {
             if (self.IsServer && Plugin.indoorHazardsRemoval.Get<bool>()) {
                 self.SpawnScrapInLevel();
+            } else {
+                orig(self);
             }
         }
     }
