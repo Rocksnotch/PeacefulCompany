@@ -1,12 +1,13 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using EnermyRemoverPatch;
 using OutdoorHazardRemoverPatch;
 using IndoorHazardRemoverPatch;
-using ConfigurableCompany;
-using ConfigurableCompany.model;
+using Amrv.ConfigurableCompany;
+using Amrv.ConfigurableCompany.content;
+using Amrv.ConfigurableCompany.display;
 using System;
 
 namespace PeacefulCompany
@@ -19,33 +20,30 @@ namespace PeacefulCompany
         private const string modGUID = "Rocksnotch.PeacefulCompany";
         internal static Plugin Instance;
         public static ManualLogSource logSrc = BepInEx.Logging.Logger.CreateLogSource("loggingSource");
-        public static Configuration enemyRemoval;
-        public static Configuration outdoorHazardsRemoval;
-        public static Configuration indoorHazardsRemoval;
+        public static Amrv.ConfigurableCompany.content.model.ConfigurationBuilder enemyRemoval;
+        public static Amrv.ConfigurableCompany.content.model.ConfigurationBuilder outdoorHazardsRemoval;
+        public static Amrv.ConfigurableCompany.content.model.ConfigurationBuilder indoorHazardsRemoval;
         public Plugin()
         {
             //Constructor
-            enemyRemoval = ConfigurationBuilder.NewConfig("enemy_removal")
+            enemyRemoval = LethalConfiguration.CreateConfig()
+                .SetID("enemy_removal")
                 .SetName("Disable Enemy Spawning")
-                .SetType(ConfigurationType.Boolean)
+                .SetType(ConfigurationTypes.Boolean)
                 .SetValue(true)
-                .SetTooltip("Disables spawning of Hostile Enemies (Minus the Bees)")
-                .SetSyncronized(true)
-                .Build();
-            outdoorHazardsRemoval = ConfigurationBuilder.NewConfig("outdoor_removal")
+                .SetSynchronized(true);
+            outdoorHazardsRemoval = LethalConfiguration.CreateConfig()
+                .SetID("outdoor_removal")
                 .SetName("Disable Outdoor Hazard Spawning")
-                .SetType(ConfigurationType.Boolean)
+                .SetType(ConfigurationTypes.Boolean)
                 .SetValue(true)
-                .SetTooltip("Disables spawning of Outdoor Hazards (Lightning, Floods, etc)")
-                .SetSyncronized(true)
-                .Build();
-            indoorHazardsRemoval = ConfigurationBuilder.NewConfig("indoor_removal")
+                .SetSynchronized(true);
+            indoorHazardsRemoval = LethalConfiguration.CreateConfig()
+                .SetID("indoor_removal")
                 .SetName("Disable Indoor Hazard Spawning")
-                .SetType(ConfigurationType.Boolean)
+                .SetType(ConfigurationTypes.Boolean)
                 .SetValue(true)
-                .SetTooltip("Disables spawning of Indoor Hazards (Turrets, Landmines)")
-                .SetSyncronized(true)
-                .Build();
+                .SetSynchronized(true);
         }
         private void Awake()
         {

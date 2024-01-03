@@ -31,7 +31,7 @@
         <HintPath>C:\Users\William\Desktop\lethalMods\PeacefulCompany\lib\Unity.Netcode.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="ConfigurableCompany">
-        <HintPath>C:\Users\William\Desktop\lethalMods\PeacefulCompany\lib\ConfigurableCompany.dll</HintPath>
+        <HintPath>C:\Users\William\Desktop\lethalMods\PeacefulCompany\lib\Amrv.ConfigurableCompany.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
