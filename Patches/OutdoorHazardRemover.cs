@@ -22,13 +22,13 @@ namespace OutdoorHazardRemoverPatch {
         private static void OnGlobalTimeSync(On.FloodWeather.orig_OnGlobalTimeSync orig, FloodWeather self)
         {
             orig(self);
-            if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
+            if (Plugin.outdoorHazardsRemoval.Equals(true)) {
                 self.floodLevelOffset = 0;
             }
         }
         private static void SetStaticElectricityWarning(On.StormyWeather.orig_SetStaticElectricityWarning orig, StormyWeather self, NetworkObject warningObject, float particleTime)
         {
-            if (Plugin.outdoorHazardsRemoval.Get<bool>()) {
+            if (Plugin.outdoorHazardsRemoval.Equals(true)) {
                 Plugin.logSrc.LogWarning($"Tried to give static warning, removed function.");
             } else {
                 orig(self, warningObject, particleTime);

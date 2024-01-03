@@ -6,8 +6,6 @@ using EnermyRemoverPatch;
 using OutdoorHazardRemoverPatch;
 using IndoorHazardRemoverPatch;
 using Amrv.ConfigurableCompany;
-using Amrv.ConfigurableCompany.content;
-using Amrv.ConfigurableCompany.display;
 using System;
 
 namespace PeacefulCompany
@@ -20,9 +18,9 @@ namespace PeacefulCompany
         private const string modGUID = "Rocksnotch.PeacefulCompany";
         internal static Plugin Instance;
         public static ManualLogSource logSrc = BepInEx.Logging.Logger.CreateLogSource("loggingSource");
-        public static Amrv.ConfigurableCompany.content.model.ConfigurationBuilder enemyRemoval;
-        public static Amrv.ConfigurableCompany.content.model.ConfigurationBuilder outdoorHazardsRemoval;
-        public static Amrv.ConfigurableCompany.content.model.ConfigurationBuilder indoorHazardsRemoval;
+        public static Amrv.ConfigurableCompany.content.model.Configuration enemyRemoval;
+        public static Amrv.ConfigurableCompany.content.model.Configuration outdoorHazardsRemoval;
+        public static Amrv.ConfigurableCompany.content.model.Configuration indoorHazardsRemoval;
         public Plugin()
         {
             //Constructor
@@ -31,19 +29,22 @@ namespace PeacefulCompany
                 .SetName("Disable Enemy Spawning")
                 .SetType(ConfigurationTypes.Boolean)
                 .SetValue(true)
-                .SetSynchronized(true);
+                .SetSynchronized(true)
+                .Build();
             outdoorHazardsRemoval = LethalConfiguration.CreateConfig()
                 .SetID("outdoor_removal")
                 .SetName("Disable Outdoor Hazard Spawning")
                 .SetType(ConfigurationTypes.Boolean)
                 .SetValue(true)
-                .SetSynchronized(true);
+                .SetSynchronized(true)
+                .Build();
             indoorHazardsRemoval = LethalConfiguration.CreateConfig()
                 .SetID("indoor_removal")
                 .SetName("Disable Indoor Hazard Spawning")
                 .SetType(ConfigurationTypes.Boolean)
                 .SetValue(true)
-                .SetSynchronized(true);
+                .SetSynchronized(true)
+                .Build();
         }
         private void Awake()
         {

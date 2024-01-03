@@ -13,4 +13,4 @@ C:\Users\William\Desktop\lethalMods\PeacefulCompany\obj\Debug\netstandard2.1\Pea
 C:\Users\William\Desktop\lethalMods\PeacefulCompany\obj\Debug\netstandard2.1\PeacefulCompany.csproj.CopyComplete
 C:\Users\William\Desktop\lethalMods\PeacefulCompany\obj\Debug\netstandard2.1\PeacefulCompany.dll
 C:\Users\William\Desktop\lethalMods\PeacefulCompany\obj\Debug\netstandard2.1\PeacefulCompany.pdb
-C:\Users\William\Desktop\lethalMods\PeacefulCompany\bin\Debug\netstandard2.1\ConfigurableCompany.dll
+C:\Users\William\Desktop\lethalMods\PeacefulCompany\bin\Debug\netstandard2.1\Amrv.ConfigurableCompany.dll
